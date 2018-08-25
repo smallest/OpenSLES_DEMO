@@ -18,26 +18,15 @@ public:
     void release();
 private:
     SLresult createEngine();
-    SLresult createOutputMix();
-    SLresult setDataSource();
-    SLresult setDataSink();
-    void allocateMemory();
 private:
     SLObjectItf engineObject;
     SLEngineItf engineEngine;
 
     SLObjectItf outputMixObject;
-    SLEnvironmentalReverbItf reverb;
-
     SLObjectItf playerObject;
     SLPlayItf playerPlay;
     SLVolumeItf playerVolume;
 
-    SLAndroidSimpleBufferQueueItf simpleBufferQueue;
-    FILE *pcmFile;
-    void *buffer;
-    uint8_t *out_buffer;
 
-    
 };
 #endif //OPENGLESDEMO_OPENGLESPlYAER_H

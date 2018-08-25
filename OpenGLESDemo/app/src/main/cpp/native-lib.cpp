@@ -7,8 +7,9 @@ OpenGLESPlayer *player = NULL;
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_smallest_test_openglesdemo_MainActivity_testPlayPCM(JNIEnv *env, jobject instance,
+Java_com_smallest_test_openglesdemo_MainActivity_start(JNIEnv *env, jobject instance,
                                                              jstring filePath_) {
+    LOGD("testPlayPCM");
     const char *filePath = env->GetStringUTFChars(filePath_, 0);
     player = new OpenGLESPlayer();
     player->setDataSource(filePath);
@@ -21,7 +22,7 @@ Java_com_smallest_test_openglesdemo_MainActivity_testPlayPCM(JNIEnv *env, jobjec
 extern "C"
 JNIEXPORT void JNICALL
 Java_com_smallest_test_openglesdemo_MainActivity_stop(JNIEnv *env, jobject instance) {
-    LOGD("hello jni");
+    LOGD("stop");
     player->stop();
     player->release();
     delete(player);

@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    private native void testPlayPCM(String filePath);
+    private native void start(String filePath);
     private native void stop();
 
     @Override
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch(view.getId()) {
             case R.id.startBtn:
                 if (mPcmFilePrivatePath != null && !mPcmFilePrivatePath.isEmpty()) {
-                    testPlayPCM(mPcmFilePrivatePath);
+                    start(mPcmFilePrivatePath);
                     mIsPlaying = true;
                 }
                 break;
