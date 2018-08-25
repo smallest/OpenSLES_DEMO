@@ -2,28 +2,32 @@
 #define OPENGLESDEMO_OPENGLESPlYAER_H
 
 #include <android/log.h>
+#include <string>
+#include <SLES/OpenSLES.h>
+#include <SLES/OpenSLES_Android.h>
 
 #define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG, "smallest", __VA_ARGS__)
 
 class OpenGLESPlayer {
 public:
     OpenGLESPlayer();
-    void release();
-    void prepare();
+    int32_t setDataSource(const std::string& pcmPath);
+    int32_t prepare();
     void start();
-    void setDataSource(File* pcmFile);
+    void stop();
+    void release();
 private:
-    int32_t createEngine();
-    int32_t createOutputMix();
-    int32_t setDataSource();
-    int32_t setDataSink();
+    SLresult createEngine();
+    SLresult createOutputMix();
+    SLresult setDataSource();
+    SLresult setDataSink();
+    void allocateMemory();
 private:
     SLObjectItf engineObject;
     SLEngineItf engineEngine;
 
     SLObjectItf outputMixObject;
     SLEnvironmentalReverbItf reverb;
-    SLEnvironmentalReverbSettings reverbSettings = SL_I3DL2_ENVIRONMENT_PRESET_STONECORRIDOR;
 
     SLObjectItf playerObject;
     SLPlayItf playerPlay;
