@@ -26,7 +26,8 @@ void pcmBufferCallBack(SLAndroidSimpleBufferQueueItf bf, void * context) {
 OpenGLESPlayer::OpenGLESPlayer():
     engineObject(NULL),
     engineEngine(NULL),
-    outputMixObject(NULL),    playerObject(NULL),
+    outputMixObject(NULL),
+    playerObject(NULL),
     playerPlay(NULL),
     playerVolume(NULL) {
 }
